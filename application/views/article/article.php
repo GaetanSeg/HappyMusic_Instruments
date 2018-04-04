@@ -7,6 +7,7 @@
             <a href="<?php echo $show;?>"><img src="<?php echo $this->picture_path.$a->image_name;?>" alt="<?php $a->title; ?>"width="156" height="156"></a>
             <div class="caption">
                 <h3><?php echo $a->title;?></h3>
+                <h3><?php echo $a->categorie_name;?></h3>
                 <p><?php echo character_limiter($a->description,80);?></p>
                 <p>
                   <a href="<?php echo $show; ?>" class="btn btn-outline-primary">détails</a>

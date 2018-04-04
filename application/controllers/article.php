@@ -9,17 +9,18 @@ class Article extends CI_Controller {
 		$this->picture_path = base_url().'img/';
 		$this->view_folder = strtolower(__CLASS__).'/';
 	}
-
+/********************************************************************************************************/
 public function index(){
 
-		$data=array(
-			'title'=>'Bienvenue sur la boutique',
-			'articles'=>$this->sitemodel->getAll(),
-			'content'=>$this->view_folder.__FUNCTION__
-		);
-		$this->load->view('template/content',$data);
+	$data=array(
+		'title'=>'Bienvenue sur la boutique',
+		'categories'=>$this->sitemodel->getCategorie(),
+		'content'=>$this->view_folder.__FUNCTION__
+	);
+	$this->load->view('template/content',$data);
 
 	}
+/********************************************************************************************************/
 
 function article(){
 
@@ -30,7 +31,8 @@ function article(){
 			);
 			$this->load->view('template/content',$data);
 	}
-
+/********************************************************************************************************/
+/********************************************************************************************************/
 function show($article_id=null)/*valeur par défaut*/{
 
 		if (!$article_id || !$this->sitemodel->getOne($article_id)){
@@ -49,4 +51,6 @@ function show($article_id=null)/*valeur par défaut*/{
 					$this->load->view('template/content',$data);
 		}
 	}
+	/********************************************************************************************************/
+
 }

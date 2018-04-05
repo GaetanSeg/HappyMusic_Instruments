@@ -7,6 +7,7 @@ class Article extends CI_Controller {
 
 		parent::__construct();
 		$this->picture_path = base_url().'img/';
+		$this->pictureCategorie_path = base_url().'img/';
 		$this->view_folder = strtolower(__CLASS__).'/';
 	}
 /********************************************************************************************************/
@@ -22,7 +23,7 @@ public function index(){
 	}
 /********************************************************************************************************/
 
-function article(){
+public function article(){
 
 			$data=array(
 				'title'=>'Bienvenue sur la boutique',
@@ -33,7 +34,7 @@ function article(){
 	}
 /********************************************************************************************************/
 /********************************************************************************************************/
-function show($article_id=null)/*valeur par défaut*/{
+public function show($article_id=null)/*valeur par défaut*/{
 
 		if (!$article_id || !$this->sitemodel->getOne($article_id)){
 				redirect();
@@ -52,5 +53,7 @@ function show($article_id=null)/*valeur par défaut*/{
 		}
 	}
 	/********************************************************************************************************/
+public function add($article){
 
+}
 }

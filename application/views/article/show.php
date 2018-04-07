@@ -9,9 +9,9 @@
           <ul class="list-unstyled mt-3 mb-4">
             <img src="<?php echo $this->picture_path.$article->image_name;?>" alt="<?php $article->title; ?>"width="556" height="556">
             <p><?php echo nl2br($article->description);?></p>
-            <span class="btn pull-right"><?php echo number_format($article->price_amount,2,',',' ');?>€</span>
+            <span class="btn pull-right"><?php echo number_format($article->price_amount,2,',',' ');?> €</span>
           </ul>
-          <a  class="btn btn-success" href="http://happymusic.local/index.php/article/panier"> <i class="icon icon-shopping-cart"><i/> ajouter au panier </a>
+          <a class="btn btn-success" href="http://happymusic.local/index.php/article/panier"><i class="icon icon-shopping-cart"><i/> ajouter au panier </a>
         </div>
       </div>
     </div>

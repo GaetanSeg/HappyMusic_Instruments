@@ -1,5 +1,4 @@
 <?php if($cart): ?>
-
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -37,9 +36,6 @@
 
 
 </table>
-
-
-
 <?php else: ?>
   <h3> Dèsoler vous n'avez aucun articles dans votre panier panier</h3>
 <?php endif; ?>

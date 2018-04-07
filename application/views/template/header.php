@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
 
     <title><?php echo (!empty($title))? $title:false;?></title>
 
@@ -43,21 +44,21 @@
 			</form>
       </div>
     </nav>
-<div class="jumbotron">
+<div class="jumbotron bg-secondary" >
   <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="">Clavier</a>
-      <a class="p-2 text-muted" href="#">Guitare</a>
-      <a class="p-2 text-muted" href="#">Percussions</a>
-      <a class="p-2 text-muted" href="#">Logiciel</a>
-      <a class="p-2 text-muted" href="#">Instruments traditionelle</a>
-      <a class="p-2 text-muted" href="#">Vents</a>
-      <a class="p-2 text-muted" href="#">Studio</a>
-      <a class="p-2 text-muted" href="http://happymusic.local/index.php/article/article">Liste des articles </a>
-      <a class="p-2 text-muted" href="#">Contact</a>
-      <a class="p-2 text-muted" href="#"></a>
-      <a class="p-2 text-muted" href="#"></a>
-      <a class="p-2 text-muted" href="#"></a>
+    <nav class="nav d-flex justify-content-between" >
+      <a class="p-2 text-white" href="">Clavier</a>
+      <a class="p-2 text-white" href="#">Guitare</a>
+      <a class="p-2 text-white" href="#">Percussions</a>
+      <a class="p-2 text-white" href="#">Logiciel</a>
+      <a class="p-2 text-white" href="#">Instruments traditionelle</a>
+      <a class="p-2 text-white" href="#">Vents</a>
+      <a class="p-2 text-white" href="#">Studio</a>
+      <a class="p-2 text-white" href="http://happymusic.local/index.php/article/article">Liste des articles </a>
+      <a class="p-2 text-white" href="#">Contact</a>
+      <a class="p-2 text-white" href="#"></a>
+      <a class="p-2 text-white" href="#"></a>
+      <a class="p-2 text-white" href="#"></a>
     </nav>
   </div>
 

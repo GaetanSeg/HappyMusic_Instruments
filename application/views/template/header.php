@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="http://happymusic.local/index.php/article/article">Article <span class="sr-only">(current)</span></a>
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"></a>
@@ -46,19 +46,18 @@
 <div class="jumbotron">
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="http://happymusic.local/article/article.php">Clavier</a>
+      <a class="p-2 text-muted" href="">Clavier</a>
       <a class="p-2 text-muted" href="#">Guitare</a>
       <a class="p-2 text-muted" href="#">Percussions</a>
       <a class="p-2 text-muted" href="#">Logiciel</a>
       <a class="p-2 text-muted" href="#">Instruments traditionelle</a>
       <a class="p-2 text-muted" href="#">Vents</a>
       <a class="p-2 text-muted" href="#">Studio</a>
+      <a class="p-2 text-muted" href="http://happymusic.local/index.php/article/article">Liste des articles </a>
+      <a class="p-2 text-muted" href="#">Contact</a>
       <a class="p-2 text-muted" href="#"></a>
       <a class="p-2 text-muted" href="#"></a>
       <a class="p-2 text-muted" href="#"></a>
-      <a class="p-2 text-muted" href="#"></a>
-      <a class="p-2 text-muted" href="#"></a>
-
     </nav>
   </div>
 

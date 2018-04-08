@@ -11,7 +11,7 @@
             <p><?php echo nl2br($article->description);?></p>
             <span class="btn pull-right"><?php echo number_format($article->price_amount,2,',',' ');?> €</span>
           </ul>
-          <a class="btn btn-success" href="http://happymusic.local/index.php/article/panier"><i class="icon icon-shopping-cart"><i/> ajouter au panier </a>
+          <a class="btn btn-success" href="<?php echo site_url('article/add/'.$article->article_id);?>">ajouter au panier </a>
         </div>
       </div>
     </div>

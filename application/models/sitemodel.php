@@ -12,7 +12,7 @@ function getAll(){
 	->join('prices as p','p.price_article_id = a.article_id','left')
 	->join('images as img','img.image_article_id = a.article_id','left')
 	->join('categories as c','c.categorie_id = a.article_categorie_id','left')
-	->order_by('a.article_id')
+	->order_by('a.article_id','desc')
 	->get();
 	if($query->num_rows()>0){
 
@@ -49,6 +49,6 @@ function getCategorie(){
 		  }
 			return $data;
 	}
-
 }
+
 }

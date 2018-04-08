@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
-    <link rel="stylesheet" href="../css/style.css">
+
 
     <title><?php echo (!empty($title))? $title:false;?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('') ?>css/bootstrap.css" rel="stylesheet">
-
+    <link href="<?php echo base_url('') ?>css/style.css" rel="stylesheet">
+    <script src="<?php echo base_url('') ?>js/jquery.js"></script>
+    <script src="<?php echo base_url('') ?>js/bootstrap.min.js"></script>
     <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
   </head>
 
   <body>
@@ -32,11 +32,13 @@
 
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"></a>
+            <a class="nav-link text-white" href="#">Inscriptions</a>
           </li>
+          <?php if($this->cart->contents()): ?>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#"></a>
+            <a class="nav-link disabled text-white" href="<?php echo site_url('article/panier'); ?>">Mon panier(<span class="nb_article"><?php echo $this->cart->total_items(); ?></span>)</a>
           </li>
+        <?php endif; ?>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

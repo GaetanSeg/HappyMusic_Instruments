@@ -53,7 +53,7 @@ public function show($article_id=null)/*valeur par défaut*/{
 		}
 	}
 	/********************************************************************************************************/
-public function add($article=null){
+public function add($article_id=null){
 	if (!$article_id || !$this->sitemodel->getOne($article_id)) {
 		redirect();
 		exit;
@@ -71,6 +71,24 @@ public function add($article=null){
 		 exit;
 	}
 }
+/********************************************************************************************************/
+public function delete($rowid=null){
+	if(!$rowid){
+		redirect();
+		exit;
+	}
+	else{
+		$data = array(
+			'rowid'=>$rowid,
+			'qty'=>0
+		);
+		$this->cart->update($data);
+		redirect('article/panier');
+
+	}
+
+}
+/********************************************************************************************************/
 public function panier(){
 	$data=array(
 		'title'=>'Mon panier',

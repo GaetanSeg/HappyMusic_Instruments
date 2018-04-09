@@ -52,6 +52,7 @@ public function show($article_id=null)/*valeur par défaut*/{
 					$this->load->view('template/content',$data);
 		}
 	}
+
 	/********************************************************************************************************/
 public function add($article_id=null){
 	if (!$article_id || !$this->sitemodel->getOne($article_id)) {
@@ -71,6 +72,7 @@ public function add($article_id=null){
 		 exit;
 	}
 }
+
 /********************************************************************************************************/
 public function delete($rowid=null){
 	if(!$rowid){
@@ -83,9 +85,38 @@ public function delete($rowid=null){
 			'qty'=>0
 		);
 		$this->cart->update($data);
+
+		if($this->input->is_ajax_request()){
+			$response = array(
+				'success'=>true,
+				'nb_article'=>$this->cart->total_items(),
+				'total'=>number_format($this->cart->total(),2,',',' ')
+
+			);
+			echo json_encode($response);exit;
+		}
 		redirect('article/panier');
 
 	}
+
+}
+/********************************************************************************************************/
+public function update($rowid=null){
+
+	if(!$rowid || !$this->input->post('qty')||!is_numeric($this->input->post('qty'))){
+		redirect('article/panier');
+		exit;
+	}
+	else{
+				$data = array(
+					'rowid'=>$rowid,
+					'qty'=>$this->input->post('qty')
+				);
+				$this->cart->update($data);
+				redirect("article/panier");
+
+		}
+
 
 }
 /********************************************************************************************************/

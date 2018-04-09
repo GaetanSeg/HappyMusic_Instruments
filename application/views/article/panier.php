@@ -27,7 +27,7 @@
               <input type="text" name="qty" class="input-small" value="<?php echo $cart['qty']; ?>">
               <button class="btn btn-sm" class=""><span class="glyphicon glyphicon-envelope">Modifier</span></button>
               <span class="delete">
-                  <a onclick=" return confirm('êtes vous sur de vouloir enlever l'article ?);" href="<?php echo site_url('article/delete/'.$cart['rowid']); ?> " class="btn btn-primary btn-sm"></i>Delete</a>
+                  <a href="<?php echo site_url('article/delete/'.$cart['rowid']); ?> " class="btn btn-primary btn-sm"></i>Delete</a>
               </span>
             <?php form_close(); ?>
           </span>
@@ -49,7 +49,8 @@
 
 
 </table>
-<span><a  class="btn btn-success glyphicon glyphicon-envelope  "href="<?php echo site_url('article/payer'); ?>">Payer ma commandes </a></span>
+<span><a  class="btn btn-success "href="<?php echo site_url('article/payer'); ?>">Payer ma commandes </a></span>
 <?php else: ?>
+
   <h3> Dèsoler vous n'avez aucun articles dans votre panier panier</h3>
 <?php endif; ?>

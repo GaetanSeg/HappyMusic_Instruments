@@ -13,8 +13,6 @@
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('') ?>css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url('') ?>css/style.css" rel="stylesheet">
-    <script src="<?php echo base_url('') ?>js/jquery.js"></script>
-    <script src="<?php echo base_url('') ?>js/bootstrap.min.js"></script>
     <!-- Custom styles for this template -->
   </head>
 

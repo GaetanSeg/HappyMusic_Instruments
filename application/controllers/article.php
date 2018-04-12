@@ -79,7 +79,7 @@ public function delete($rowid=null){
 		redirect();
 		exit;
 	}
-	else{
+
 		$data = array(
 			'rowid'=>$rowid,
 			'qty'=>0
@@ -97,27 +97,32 @@ public function delete($rowid=null){
 		}
 		redirect('article/panier');
 
-	}
+
 
 }
 /********************************************************************************************************/
-public function update($rowid=null){
-
-	if(!$rowid || !$this->input->post('qty')||!is_numeric($this->input->post('qty'))){
-		redirect('article/panier');
-		exit;
+public function update($rowid=null)
+{
+	if(!$rowid || !$this->input->post('qty') || !is_numeric($this->input->post('qty'))){
+		redirect('article/panier');exit;
 	}
-	else{
-				$data = array(
-					'rowid'=>$rowid,
-					'qty'=>$this->input->post('qty')
-				);
-				$this->cart->update($data);
-				redirect("article/panier");
+	$data = array(
+		'rowid'=>$rowid,
+		'qty'=>$this->input->post('qty')
+	);
+	$this->cart->update($data);
 
-		}
+	/*if($this->input->is_ajax_request()){
+		$response = array(
+			'success'=>true,
+			'nb_article'=>$this->cart->total_items(),
+			'total'=>number_format($this->cart->total(), 2, ',', ' '),
+			'total_for_item'=>number_format($this->input->post('qty') * $this->input->post('price'), 2, ',', ' ')
+		);
+		echo json_encode($response);exit;
+	}*/
 
-
+	redirect('article/panier');
 }
 /********************************************************************************************************/
 public function panier(){

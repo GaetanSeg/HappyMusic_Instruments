@@ -7,6 +7,7 @@ class Sitemodel extends CI_Model {
 
 		parent::__construct();
 }
+
 function getAll(){
 	$query = $this->db->select('*')->from('articles as a')
 	->join('prices as p','p.price_article_id = a.article_id','left')

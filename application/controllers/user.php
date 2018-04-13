@@ -38,6 +38,21 @@ public function signup(){
 
 					//redirect('user');exit;
 				}
+
+				$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]');
+				$this->form_validation->set_rules('password','Mot de passe','trim|required|min_length[5]');
+				$this->form_validation->set_rules('lastname','Nom','trim|required');
+				$this->form_validation->set_rules('firstname','Prénom','trim|required');
+				$this->form_validation->set_rules('address','Adresse','trim|required');
+				$this->form_validation->set_rules('city','Ville','trim|required');
+				$this->form_validation->set_rules('cp','Code postal','trim|required');
+				$this->form_validation->set_rules('country','Pays','trim|required|is_natural_no_zero');
+				$this->form_validation->set_rules('phone','Téléphone','trim|required|integer');
+
+				if($this->form_validation->run()){
+
+				}
+
 				$data = array(
 					'title'=>'inscriptions',
 					'countries'=>$this->usermodel->get_countries(),

@@ -17,7 +17,7 @@ function signup($data){
 }
 function login($email,$password){
 
-	$query = $this->db->getWhere('users',array('email'=>$email,'password'=>$password));
+	$query = $this->db->get_where('users',array('email'=>$email,'password'=>$password));
 
 	if($query->num_rows()>0){
 

@@ -1,7 +1,9 @@
 <h2>inscriptions</h2>
-
+  <?php if($this->session->flashdata('success')): ?>
+    <div class="alert alert-success"><?php echo $this->session->flashdata('success');?></div>
+  <?php endif; ?>
     <?php if(validation_errors()):?>
-      <div class="alert alert-error"><?php validation_errors('<p>','</p>') ?></div>
+      <div class="alert alert-danger"><?php echo validation_errors('<p>','</p>') ?></div>
     <?php endif; ?>
 
   <?php echo form_open('user/signup',array('class'=>'form-horizontal')); ?>

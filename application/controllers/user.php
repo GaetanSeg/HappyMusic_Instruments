@@ -31,12 +31,34 @@ public function login()
 	if($this->usermodel->is_logged()){
 		redirect('user');exit;
 	}
+
+	$this->form_validation->set_rules('email','Email','trim|required|valid_email');
+	$this->form_validation->set_rules('password','Mot de passe','trim|required');
+
+	if($this->form_validation->run()){
+
+		if ($this->usermodel->login($this->input->post('email'),$this->input->post('password'))) {
+
+			redirect('user');exit;
+
+		}else{
+			$this->session->set_flashdata('error','Mauvais identifiants ');
+			redirect('user');exit;
+		}
+
+	}
+
+	$data = array(
+			'title'=>'Connexion',
+			'content'=>$this->view_folder.__FUNCTION__
+	);
+	$this->load->view('template/content',$data);
 }
 public function signup(){
 
-			if(!$this->usermodel->is_logged()){
+			if($this->usermodel->is_logged()){
 
-					//redirect('user');exit;
+					redirect('user');exit;
 				}
 
 				$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]');
@@ -51,6 +73,26 @@ public function signup(){
 
 				if($this->form_validation->run()){
 
+					$user=array(
+
+							'email'=>$this->input->post('email'),
+							'firstname'=>$this->input->post('firstname'),
+							'lastname'=>$this->input->post('lastname'),
+							'address'=>$this->input->post('address'),
+							'postal'=>$this->input->post('cp'),
+							'user_country_id'=>$this->input->post('country'),
+							'city'=>$this->input->post('city'),
+							'phone'=>$this->input->post('phone'),
+							'password'=>sha1(md5($this->input->post('password')))
+						);
+						if($this->usermodel->signup($user)){
+
+							$this->session->set_flashdata('success','Inscription réussie');
+							redirect(current_url());exit;
+
+						}else{
+							throw new Exception('Une erreur est survenue,veuillez recommencer ');
+						}
 				}
 
 				$data = array(

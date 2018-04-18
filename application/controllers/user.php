@@ -20,7 +20,7 @@ public function index()
 	$data = array(
 		'title'=>'Mes achats',
 		'user'=>$this->user,
-		'orders'=>$this->usermodel->get_orders($this->user->user_id),
+		//'orders'=>$this->usermodel->get_orders($this->user->user_id),
 		'content'=>$this->view_folder.__FUNCTION__
 	);
 	$this->load->view('template/content',$data);
@@ -43,7 +43,7 @@ public function login()
 
 		}else{
 			$this->session->set_flashdata('error','Mauvais identifiants ');
-			redirect('user');exit;
+			redirect(current_url());exit;
 		}
 
 	}

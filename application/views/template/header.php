@@ -33,7 +33,7 @@
       padding: 65px;
       margin-right: 380px;
       margin-left: 350px;
-      display: none ;
+      display:;
   }
   </style>
   <body>
@@ -52,15 +52,17 @@
             <li class="nav-item">
               <a class="nav-link text-white" href="<?php echo site_url('user/signup');?>">Inscriptions</a>
             </li>
+            <li>
+              <div id="flip" class="text-white">Connexion</div>
+            </li>
           <?php else: ?>
               <li class="nav-item">
                 <a class="nav-link text-white" href="<?php echo site_url('user');?>">Mes achats</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="<?php echo site_url('user/logout');?>">Déconnexion</a>
+              </li>
           <?php endif; ?>
-
-          <li>
-            <div id="flip" class="text-white">Connexion</div>
-          </li>
 
           <?php if($this->cart->contents()): ?>
           <li class="nav-item">
@@ -74,6 +76,7 @@
 			</form>
       </div>
     </nav>
+    <?php if(!$this->usermodel->is_logged()): ?>
     <?php echo form_open('user/login',array('class'=>'navbar-form pull-right'));?>
       <div id="panel" class="bg-dark">
         <input name="email" class="span2" type="text" placeholder="Email">
@@ -81,6 +84,7 @@
         <button type="submit" class="btn-success">Login</button>
       </div>
     <?php echo form_close();?>
+  <?php endif; ?>
 <div class="jumbotron bg-secondary" >
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between" >

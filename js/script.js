@@ -3,11 +3,6 @@ if(typeof jQuery == 'undefined'){
   alert("le framework jquery n'est pas chargé ");
 
 }
-$(document).ready(function(){
-  $("#flip").click(function(){
-    $("#panel").slideToggle("slow");
-  });
-});
 
 $(document).ready(function(){
 

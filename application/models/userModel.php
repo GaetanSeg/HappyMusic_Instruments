@@ -63,4 +63,41 @@ function is_logged(){
 
 	return $this->session->userdata('lastname')&& $this->session->userdata('logged');
 }
+function get_orders($user_id)
+{
+	$q = $this->db->select('*')->from('orders o')
+	->where('o.order_user_id',$user_id)
+	->order_by('o.order_valid','asc')->order_by('o.order_id','desc')
+	->get();
+	if($q->num_rows()>0)
+	{
+		foreach($q->result() as $row)
+		{
+			$data[] = $row;
+		}
+		return $data;
+	}
+}
+function add_order($data){
+
+	$this->db->insert('orders',$data);
+	return true;
+
+}
+
+function add_sale($data){
+
+
+	$this->db->insert('sales',$data);
+	return true;
+
+	}
+
+function valid_order($token,$data){
+
+		$this->db->where('order_token',$token)->update('orders',$data);
+		return true;
+
+	}
+
 }

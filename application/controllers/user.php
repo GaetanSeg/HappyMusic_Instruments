@@ -20,7 +20,7 @@ public function index()
 	$data = array(
 		'title'=>'Mes achats',
 		'user'=>$this->user,
-		//'orders'=>$this->usermodel->get_orders($this->user->user_id),
+		'orders'=>$this->usermodel->get_orders($this->user->user_id),
 		'content'=>$this->view_folder.__FUNCTION__
 	);
 	$this->load->view('template/content',$data);
@@ -107,4 +107,147 @@ public function logout(){
 	$this->session->sess_destroy();
 	redirect();exit;
 }
+public function payer(){
+
+	if(!$this->usermodel->is_logged()){
+		redirect('user/login');exit;
+	}
+
+	if(!$this->cart->contents()){
+		redirect();exit;
+	}
+
+	$this->load->library('paypal');
+	$params = array(
+		'RETURNURL'=>site_url('user/retour'),
+		'CANCELURL'=>site_url('article/cancel')
+	);
+
+	$items = array();
+
+	$i = 0;
+	foreach($this->cart->contents() as $cart)
+	{
+		$items['L_PAYMENTREQUEST_0_NAME'.$i]  = $cart['name'];
+		$items['L_PAYMENTREQUEST_0_NUMBER'.$i] = $cart['id'];
+		$items['L_PAYMENTREQUEST_0_DESC'.$i] = $cart['name'];
+		$items['L_PAYMENTREQUEST_0_AMT'.$i] = $cart['price'];
+		$items['L_PAYMENTREQUEST_0_QTY'.$i] = $cart['qty'];
+		$i++;
+	}
+
+	$items['PAYMENTREQUEST_0_AMT'] = $this->cart->total();
+	$items['PAYMENTREQUEST_0_CURRENCYCODE'] = 'EUR';
+
+	$params += $items;
+	$paypal = new Paypal();
+	$response = $paypal->request('SetExpressCheckout',$params);
+
+	//reponse de Paypal renvoi un jeton si tout c'est bien passé
+	if(!empty($response['TOKEN']) &&  $response['ACK']=='Success'){
+
+		$token = htmlentities($response['TOKEN']);
+
+		$order = array(
+			'order_token'=>$token,
+			'order_user_id'=>$this->user->user_id,
+			'order_amt'=>$this->cart->total(),
+			'order_total_items'=>$this->cart->total_items(),
+			'order_paypal_infos'=>false,
+			'order_valid'=>false
+		);
+
+		if($this->usermodel->add_order($order)){
+
+			foreach ($this->cart->contents() as $cart) {
+				$sale= array(
+
+					'sale_user_id'=>$this->user->user_id,
+					'sale_article_id'=>$cart['id'],
+					'sale_qty'=>$cart['qty'],
+					'sale_amt'=>$cart['price'],
+					'sale_order_token'=>$token,
+					'sale_valid'=>false
+
+				);
+
+				$this->usermodel->add_sale($sale);
+
+			}
+				header('Location: https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token='.urlencode($token).'&useraction=commit');
+		}
+	}else{
+		echo "une erreur s'est produite : <br>".$response['L_LONGMESSAGE0'];
+	}
+
+}
+function retour(){
+
+	if(empty($_GET)){
+
+		redirect();exit;
+
+	}else{
+
+		$this->load->library('paypal');
+	}
+	if(!empty($_GET['token'])){
+
+			$params = array('TOKEN'=>htmlentities($_GET['token'],ENT_QUOTES));
+
+			$paypal = new Paypal();
+			$response = $paypal-> request('GetExpressCheckoutDetails',$params);
+
+			if(is_array($response)&& $response['ACK']=='Success'){
+
+				$token = htmlentities($response['TOKEN']);
+				$user = $this->usermodel->get_user($this->sitemodel->get_order($token)->order_user_id);
+
+				$payment_params = array(
+					'PAYMENTREQUEST_0_PAYMENTACTIO'=>'Sale',
+					'PayerID'=>htmlentities($_GET['PayerID'], ENT_QUOTES),
+					'PAYMENTREQUEST_0_AMT'=>$response['AMT'],
+					'PAYMENTREQUEST_0_CURRENCYCODE'=> 'EUR'
+				);
+
+				$params += $payment_params;
+				$paypal = new Paypal();
+				$response = $paypal->request('DoExpressCheckoutPayment',$params);
+
+				if(is_array($response) && $response['ACK']=='Success'){
+
+						echo '<pre>';print_r($response);exit;
+
+						$token =  htmlentities($response['TOKEN']);
+
+						$order = array(
+
+							'order_paypal_infos'=>serialize($response),
+							'order_valid'=>true
+
+						);
+						if($this->usermodel->valid_order($token,$order)){
+
+								$sales = $this->sitemodel->get_sales_order($token);
+								foreach ($sales as $s) {
+
+									$data = array('sale_valdi'=>true):
+									$this->sitemodel->update_sales_order($token,$data);
+						}
+
+						$amount = htmlentities($response['PAYMENTINFO_0_AMT']);
+
+						//envoi d'un email au client
+						$this->email->from('supra3946@gmail.com');
+						$this->email->to($user->email);
+						$this->email->subject('Vos achats sur HappyMusic-Instruments');
+						$this->email->message('');
+
+					}
+				}
+			}
+		}
+	}
+
+
 }

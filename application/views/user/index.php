@@ -1,2 +1,2 @@
-<h3>mes achats</h3>
-<?php echo $user->firstname; ?>
+<h3>Mes achats</h3>
+<?php echo "Bienvenue ".$user->firstname." dans votre liste d'achats"; ?>

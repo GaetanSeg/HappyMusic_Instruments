@@ -44,8 +44,14 @@ class paypal{
       $response = curl_exec($ch);
 
       if(!curl_errno($ch)){
+
         curl_close($ch);
         $responseArray = array();
+        parse_str($response,$responseArray);
+        return $responseArray;
+      }else{
+        curl_close($ch);
+        return false;
       }
   }
 

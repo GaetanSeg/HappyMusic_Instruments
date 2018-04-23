@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Article extends CI_Controller {
@@ -136,4 +137,12 @@ public function panier(){
 	$this->load->view('template/content',$data);
 
 }
+
+/********************************************************************************************************/
+
+public function cancel(){
+
+	echo 'paiement annulé';
+
+	}
 }

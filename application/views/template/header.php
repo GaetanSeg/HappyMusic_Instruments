@@ -30,10 +30,11 @@
   }
 
   #panel {
+      border-radius: 0px 0px 50px 50px;
       padding: 65px;
       margin-right: 380px;
       margin-left: 350px;
-      display:;
+      display:none;
   }
   </style>
   <body>
@@ -53,7 +54,7 @@
               <a class="nav-link text-white" href="<?php echo site_url('user/signup');?>">Inscriptions</a>
             </li>
             <li>
-              <div id="flip" class="text-white">Connexion</div>
+              <div id="flip" class="text-white btn ">Connexion</div>
             </li>
           <?php else: ?>
               <li class="nav-item">
@@ -72,7 +73,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 			</form>
       </div>
     </nav>
@@ -81,25 +82,23 @@
       <div id="panel" class="bg-dark">
         <input name="email" class="span2" type="text" placeholder="Email">
         <input name="password" class="span2" type="password" placeholder="Mot de passe">
-        <button type="submit" class="btn-success">Login</button>
+        <button type="submit" class="btn-info">Login</button>
       </div>
     <?php echo form_close();?>
   <?php endif; ?>
-<div class="jumbotron bg-secondary" >
+<div class="jumbotron bg-secondary"  >
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between" >
-      <a class="p-2 text-white" href="">Clavier</a>
-      <a class="p-2 text-white" href="#">Guitare</a>
-      <a class="p-2 text-white" href="#">Percussions</a>
-      <a class="p-2 text-white" href="#">Logiciel</a>
-      <a class="p-2 text-white" href="#">Instruments traditionelle</a>
-      <a class="p-2 text-white" href="#">Vents</a>
-      <a class="p-2 text-white" href="#">Studio</a>
+      <a class="p-2 text-white" href="<?php echo site_url('article/clavier') ?>">Clavier</a>
+      <a class="p-2 text-white" href="<?php echo site_url('article/guitare') ?>">Guitare</a>
+      <a class="p-2 text-white" href="<?php echo site_url('article/percussions') ?>">Percussions</a>
+      <a class="p-2 text-white" href="<?php echo site_url('article/logiciel') ?>">Logiciel</a>
+      <a class="p-2 text-white" href="<?php echo site_url('article/instrumentsTraditionnele') ?>">Instruments traditionele</a>
+      <a class="p-2 text-white" href="<?php echo site_url('article/vents') ?>">Vents</a>
+      <a class="p-2 text-white" href="<?php echo site_url('article/studio') ?>">Studio</a>
       <a class="p-2 text-white" href="<?php echo site_url('article/article') ?>">Liste des articles </a>
-      <a class="p-2 text-white" href="#">Contact</a>
-      <a class="p-2 text-white" href="#"></a>
-      <a class="p-2 text-white" href="#"></a>
-      <a class="p-2 text-white" href="#"></a>
+      <a class="p-2 text-white" href="<?php echo site_url('article/contact') ?>">Contact</a>
+
     </nav>
   </div>
 

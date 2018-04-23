@@ -56,7 +56,7 @@
 	</tbody>
 </table>
 
-<span><a class="btn btn-success" href="<?php echo site_url('article/payer');?>">Payer ma commande</a>
+<span><a class="btn btn-success" href="<?php echo site_url('user/payer');?>">Payer ma commande</a>
 
 <?php else:?>
 

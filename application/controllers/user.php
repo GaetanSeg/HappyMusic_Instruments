@@ -216,10 +216,9 @@ function retour(){
 
 				if(is_array($response) && $response['ACK']=='Success'){
 
-						echo '<pre>';print_r($response);exit;
+						//echo '<pre>';print_r($response);exit;
 
 						$token =  htmlentities($response['TOKEN']);
-
 						$order = array(
 
 							'order_paypal_infos'=>serialize($response),
@@ -228,11 +227,11 @@ function retour(){
 						);
 						if($this->usermodel->valid_order($token,$order)){
 
-								$sales = $this->sitemodel->get_sales_order($token);
+								$sales = $this->sitemodel->get_sales_orders($token);
 								foreach ($sales as $s) {
 
 									$data = array('sale_valdi'=>true);
-									$this->sitemodel->update_sales_order($token,$data);
+									$this->sitemodel->update_sales_orders($token,$data);
 						}
 
 						$amount = htmlentities($response['PAYMENTINFO_0_AMT']);
@@ -241,7 +240,16 @@ function retour(){
 						$this->email->from('supra3946@gmail.com');
 						$this->email->to($user->email);
 						$this->email->subject('Vos achats sur HappyMusic-Instruments');
-						$this->email->message('');
+						message('<h2>Bonjour '.$user->firstname.', </h2>
+							<div>Commande n° <strong>'.$token.'</strong></div>
+							<div>Montant de la commande :<strong>'.$amount.'</strong></div>
+							<p>Votre commande sera expédiée rapidement bla bla bla<br>
+							Vous pouvez consulter '.anchor('user','la liste de vos achats').' dans votre epace personnel et imprimer la facture.</p>');
+
+						$this->email->send();
+
+						$this->cart->destroy();
+						redirect('user');
 
 					}
 				}

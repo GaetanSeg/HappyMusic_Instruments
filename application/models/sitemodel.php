@@ -25,10 +25,10 @@ class Sitemodel extends CI_Model {
 				return $data;
 		}
 	}
-	function getArticleByCategorie($categorie_id){
+	function getArticleByCategorie(){
 
 		$query = $this->db->select('*')->from('articles as a')
-		->where('a.article_categorie_id',$categorie_id)
+		->where('a.article_categorie_id','1')
 		->join('prices as p','p.price_article_id = a.article_id','left')
 		->join('images as img','img.image_article_id = a.article_id','left')
 		->order_by('a.article_id')

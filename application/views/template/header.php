@@ -15,6 +15,7 @@
     <link href="<?php echo base_url('') ?>css/style.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   </head>
   <script type="text/javascript">
       $(document).ready(function(){
@@ -86,7 +87,7 @@
       </div>
     <?php echo form_close();?>
   <?php endif; ?>
-<div class="jumbotron bg-secondary"  >
+<div class="jumbotron bg-info"  >
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between" >
       <a class="p-2 text-white" href="<?php echo site_url('article/clavier') ?>">Clavier</a>

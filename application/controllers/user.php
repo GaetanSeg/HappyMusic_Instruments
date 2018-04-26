@@ -231,7 +231,7 @@ function retour(){
 								$sales = $this->sitemodel->get_sales_order($token);
 								foreach ($sales as $s) {
 
-									$data = array('sale_valdi'=>true):
+									$data = array('sale_valdi'=>true);
 									$this->sitemodel->update_sales_order($token,$data);
 						}
 
@@ -248,6 +248,4 @@ function retour(){
 			}
 		}
 	}
-
-
 }

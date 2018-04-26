@@ -30,7 +30,7 @@
 							<input type="text" name="qty" class="input-small" value="<?php echo $cart['qty'];?>">
 							<button class="btn"><i class="icon-pencil"></i>Modifier</button>
 							<span class="delete">
-								<a href="<?php echo site_url('article/delete/'.$cart['rowid']);?>" class="btn btn-inverse"><i class="icon-white icon-trash"></i>Supprimer</a>
+								<a href="<?php echo site_url('article/delete/'.$cart['rowid']);?>" class="btn btn-inverse icon"><i class="icon-white icon-trash"></i>Supprimer</a>
 							</span>
 						<?php echo form_close();?>
 					</span>

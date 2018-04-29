@@ -34,7 +34,17 @@ public function article(){
 			$this->load->view('template/content',$data);
 	}
 /********************************************************************************************************/
+public function categorie()
+{
 
+	$data = array(
+		'title'=>'Categorie',
+		'categorie'=>$this->categorie,
+		'articles'=>$this->sitemodel->get_articles_categorie($this->categorie->categorie_id),
+		'content'=>$this->view_folder.__FUNCTION__
+	);
+	$this->load->view('template/content',$data);
+}
 /********************************************************************************************************/
 public function show($article_id=null)/*valeur par défaut*/{
 

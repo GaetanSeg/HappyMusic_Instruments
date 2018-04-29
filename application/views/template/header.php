@@ -25,6 +25,7 @@
         });
   </script>
   <style>
+
   #panel, #flip {
       padding: 8px;
       text-align: center;
@@ -39,7 +40,7 @@
   }
   </style>
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="<?php echo base_url('') ?>index.php/">HappyMusic-Instruments</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -77,6 +78,9 @@
           <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 			</form>
       </div>
+      <div >
+
+      </div>
     </nav>
     <?php if(!$this->usermodel->is_logged()): ?>
     <?php echo form_open('user/login',array('class'=>'navbar-form pull-right'));?>
@@ -87,20 +91,3 @@
       </div>
     <?php echo form_close();?>
   <?php endif; ?>
-<div class="jumbotron bg-info"  >
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between" >
-      <a class="p-2 text-white" href="<?php echo site_url('article/clavier') ?>">Clavier</a>
-      <a class="p-2 text-white" href="<?php echo site_url('article/guitare') ?>">Guitare</a>
-      <a class="p-2 text-white" href="<?php echo site_url('article/percussions') ?>">Percussions</a>
-      <a class="p-2 text-white" href="<?php echo site_url('article/logiciel') ?>">Logiciel</a>
-      <a class="p-2 text-white" href="<?php echo site_url('article/instrumentsTraditionnele') ?>">Instruments traditionele</a>
-      <a class="p-2 text-white" href="<?php echo site_url('article/vents') ?>">Vents</a>
-      <a class="p-2 text-white" href="<?php echo site_url('article/studio') ?>">Studio</a>
-      <a class="p-2 text-white" href="<?php echo site_url('article/article') ?>">Liste des articles </a>
-      <a class="p-2 text-white" href="<?php echo site_url('article/contact') ?>">Contact</a>
-
-    </nav>
-  </div>
-
-</div>

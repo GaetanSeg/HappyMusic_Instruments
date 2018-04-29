@@ -8,13 +8,14 @@ class Usermodel extends CI_Model {
 
 		parent::__construct();
 }
-
+/********************************************************************************************************/
 function signup($data){
 
 	$this->db->insert('users',$data);
 	return true;
 
 }
+/********************************************************************************************************/
 function login($email,$password){
 
 	$query = $this->db->get_where('users',array('email'=>$email,'password'=>sha1(md5($password))));
@@ -30,6 +31,7 @@ function login($email,$password){
 	}
 	return false;
 }
+/********************************************************************************************************/
 function get_countries(){
 
 	$query = $this->db->get('countries');
@@ -42,6 +44,7 @@ function get_countries(){
 		return $data;
 	}
 }
+/********************************************************************************************************/
 function get_user($param){
 	if(is_numeric($param)){
 
@@ -59,32 +62,36 @@ function get_user($param){
 		return $query->row();
 	}
 }
+/********************************************************************************************************/
 function is_logged(){
 
 	return $this->session->userdata('lastname')&& $this->session->userdata('logged');
 }
-function get_orders($user_id)
-{
-	$q = $this->db->select('*')->from('orders o')
+/********************************************************************************************************/
+function get_orders_user($user_id){
+
+	$query = $this->db->select('*')->from('orders as  o')
 	->where('o.order_user_id',$user_id)
 	->order_by('o.order_valid','asc')->order_by('o.order_id','desc')
 	->get();
-	if($q->num_rows()>0)
-	{
-		foreach($q->result() as $row)
-		{
+
+	if($query->num_rows()>0){
+
+		foreach ($query->result() as $row) {
+
 			$data[] = $row;
 		}
 		return $data;
 	}
 }
+/********************************************************************************************************/
 function add_order($data){
 
 	$this->db->insert('orders',$data);
 	return true;
 
 }
-
+/********************************************************************************************************/
 function add_sale($data){
 
 
@@ -92,7 +99,7 @@ function add_sale($data){
 	return true;
 
 	}
-
+/********************************************************************************************************/
 function valid_order($token,$data){
 
 		$this->db->where('order_token',$token)->update('orders',$data);

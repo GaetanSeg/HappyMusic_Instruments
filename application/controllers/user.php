@@ -7,7 +7,7 @@ class User extends CI_Controller {
 
 		parent::__construct();
 		$this->user = ($this->usermodel->is_logged()) ? $this->usermodel->get_user($this->session->userdata('lastname')) : false;
-		$this->picture_path = base_url().'pictures/';
+		$this->picture_path = base_url().'img/';
 		$this->view_folder = strtolower(__CLASS__).'/';
 	}
 /********************************************************************************************************/
@@ -20,12 +20,12 @@ public function index()
 	$data = array(
 		'title'=>'Mes achats',
 		'user'=>$this->user,
-		'orders'=>$this->usermodel->get_orders($this->user->user_id),
+		'orders'=>$this->usermodel->get_orders_user($this->user->user_id),
 		'content'=>$this->view_folder.__FUNCTION__
 	);
 	$this->load->view('template/content',$data);
 }
-
+/********************************************************************************************************/
 public function login()
 {
 	if($this->usermodel->is_logged()){
@@ -54,6 +54,7 @@ public function login()
 	);
 	$this->load->view('template/content',$data);
 }
+/********************************************************************************************************/
 public function signup(){
 
 			if($this->usermodel->is_logged()){
@@ -101,12 +102,14 @@ public function signup(){
 					'content'=>$this->view_folder.__FUNCTION__
 				);
 				$this->load->view('template/content',$data);
-			}
+}
+/********************************************************************************************************/
 public function logout(){
 
 	$this->session->sess_destroy();
 	redirect();exit;
 }
+/********************************************************************************************************/
 public function payer(){
 
 	if(!$this->usermodel->is_logged()){
@@ -181,6 +184,7 @@ public function payer(){
 	}
 
 }
+/********************************************************************************************************/
 function retour(){
 
 	if(empty($_GET)){
@@ -230,14 +234,14 @@ function retour(){
 								$sales = $this->sitemodel->get_sales_orders($token);
 								foreach ($sales as $s) {
 
-									$data = array('sale_valdi'=>true);
+									$data = array('sale_valid'=>true);
 									$this->sitemodel->update_sales_orders($token,$data);
-						}
+								}
 
 						$amount = htmlentities($response['PAYMENTINFO_0_AMT']);
 
 						//envoi d'un email au client
-						$this->email->from('supra3946@gmail.com');
+					/*	$this->email->from('supra3946@gmail.com');
 						$this->email->to($user->email);
 						$this->email->subject('Vos achats sur HappyMusic-Instruments');
 						message('<h2>Bonjour '.$user->firstname.', </h2>
@@ -246,7 +250,7 @@ function retour(){
 							<p>Votre commande sera expédiée rapidement bla bla bla<br>
 							Vous pouvez consulter '.anchor('user','la liste de vos achats').' dans votre epace personnel et imprimer la facture.</p>');
 
-						$this->email->send();
+						$this->email->send();*/
 
 						$this->cart->destroy();
 						redirect('user');
@@ -256,4 +260,61 @@ function retour(){
 			}
 		}
 	}
+/********************************************************************************************************/
+public function commande($token=null){
+	if(!$token){
+		redirect();
+		exit;
+
+	}else{
+
+			$sales= $this->sitemodel->get_sales_orders($token);
+	}
+
+	if (!$sales) {
+
+		redirect();
+		exit;
+
+	}else{
+
+		$data = array(
+			'title'=>'Mes commandes',
+			'sales'=>$sales,
+			'order'=>$this->sitemodel->get_order($token),
+			'content'=>$this->view_folder.__FUNCTION__
+		);
+
+		$this->load->view('template/content',$data);
+
+	}
+}
+/********************************************************************************************************/
+public function facture($token=null) {
+
+	if (!$this->usermodel->is_logged()) {
+			redirect();
+			exit;
+	}
+	else if(!$token){
+		redirect();
+		exit;
+
+	}else {
+
+		$order= $this->sitemodel->get_order($token);
+		$sales= $this->sitemodel->get_sales_orders($token);
+
+
+		$data = array(
+			'sales'=>$sales,
+			'order'=>$order
+		);
+
+	}
+	$this->load->view($this->view_folder.__FUNCTION__,$data);
+
+
+}
+/********************************************************************************************************/
 }

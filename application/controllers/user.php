@@ -241,16 +241,16 @@ function retour(){
 						$amount = htmlentities($response['PAYMENTINFO_0_AMT']);
 
 						//envoi d'un email au client
-					/*	$this->email->from('supra3946@gmail.com');
+						$this->email->from('supra3946@gmail.com');
 						$this->email->to($user->email);
 						$this->email->subject('Vos achats sur HappyMusic-Instruments');
-						message('<h2>Bonjour '.$user->firstname.', </h2>
+						$this->email->message('<h2>Bonjour '.$user->firstname.', </h2>
 							<div>Commande n° <strong>'.$token.'</strong></div>
 							<div>Montant de la commande :<strong>'.$amount.'</strong></div>
 							<p>Votre commande sera expédiée rapidement bla bla bla<br>
 							Vous pouvez consulter '.anchor('user','la liste de vos achats').' dans votre epace personnel et imprimer la facture.</p>');
 
-						$this->email->send();*/
+						$this->email->send();
 
 						$this->cart->destroy();
 						redirect('user');

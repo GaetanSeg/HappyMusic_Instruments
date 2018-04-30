@@ -110,7 +110,6 @@ public function delete($rowid=null){
 		redirect('article/panier');
 
 
-
 }
 /********************************************************************************************************/
 public function update($rowid=null)

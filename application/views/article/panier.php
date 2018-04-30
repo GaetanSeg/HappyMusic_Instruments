@@ -3,10 +3,10 @@
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr>
-			<th></th>
+			<th>Article</th>
 			<th>Description</th>
 			<th>Qty</th>
-			<th>Price</th>
+			<th>Prix T.T.C</th>
 			<th>Total</th>
 		</tr>
 	</thead>
@@ -27,15 +27,15 @@
 						<?php echo form_open('article/update/'.$cart['rowid'], array('class'=>'form-inline'));?>
 							<input type="hidden" name="article_id" value="<?php echo $article->article_id;?>">
 							<input type="hidden" name="price" value="<?php echo $cart['price'];?>">
-							<input type="text" name="qty" class="input-small" value="<?php echo $cart['qty'];?>">
-							<button class="btn"><i class="icon-pencil"></i>Modifier</button>
-							<span class="delete">
-								<a href="<?php echo site_url('article/delete/'.$cart['rowid']);?>" class="btn btn-inverse icon"><i class="icon-white icon-trash"></i>Supprimer</a>
+							<input  class="mr-2" type="text" name="qty" class="input-small" value="<?php echo $cart['qty'];?>">
+							<button class="btn mr-2"><i class="icon-pencil"></i>Modifier</button>
+							<span class="delete" >
+								<a  href="<?php echo site_url('article/delete/'.$cart['rowid']);?>" class="btn btn-danger">Supprimer</a>
 							</span>
 						<?php echo form_close();?>
 					</span>
 				</td>
-				<td><?php echo number_format($cart['price'], 2, ',', ' ');?></td>
+				<td><?php echo number_format($cart['price'], 2, ',', ' ');?> €</td>
 				<td><span class="total_for_item"><?php echo number_format($cart['price'] * $cart['qty'], 2, ',', ' ');?></span> €</td>
 			</tr>
 

@@ -5,9 +5,9 @@ $config['protocol'] = 'smtp';
 
 $config['smtp_host'] = 'ssl://smtp.googlemail.com';
 
-$config['smtp_user'] = 'supra3946@gmail.com';
+$config['smtp_user'] = 'happymusicinstruments@gmail.com';
 
-$config['smtp_pass'] = 'onizuka@7134';
+$config['smtp_pass'] = 'testhappymusic';
 
 $config['smtp_port'] = 465;
 

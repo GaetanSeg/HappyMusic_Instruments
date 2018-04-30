@@ -107,4 +107,12 @@ function valid_order($token,$data){
 
 	}
 
+function delete_order($order_token){
+
+			$this->db->where('order_token', $order_token);
+			$this->db->delete('orders');
+
+			return true;
+		}
+
 }

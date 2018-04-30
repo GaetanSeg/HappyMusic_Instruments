@@ -19,7 +19,11 @@
             <td><?php echo number_format($o->order_amt,2,',',' '); ?></td>
             <td><?php echo ($o->order_valid) ? 'Payée':'Transaction annulée'; ?></td>
             <td><?php echo date('d-m-y',strtotime($o->order_date));?></td>
-            <td> <a class="btn btn-info" href="<?php echo site_url('user/facture/'.$o->order_token); ?>">Impression</a></td>
+            <td> <a class="btn btn-info" href="<?php echo site_url('user/facture/'.$o->order_token); ?>">Impression</a>
+              <span class="delete">
+                <a href="<?php echo site_url('user/delete/'.$o->order_token);?>" class="btn btn-inverse icon"></i>Supprimer</a>
+              </span>
+            </td>
           </tr>
       <?php endforeach; ?>
     <?php endif ; ?>

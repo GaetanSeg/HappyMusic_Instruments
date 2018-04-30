@@ -35,8 +35,8 @@
     <tr>
       <td><?php echo $article->title;?></td>
       <td><?php echo $s->sale_qty;?></td>
-      <td><?php echo number_format($article->price_amount, 2, ',', ' ');?></td>
-      <td><?php echo number_format($article->price_amount * $s->sale_qty, 2, ',' , ' ');?></td>
+      <td><?php echo number_format($article->price_amount, 2, ',', ' ');?>€</td>
+      <td><?php echo number_format($article->price_amount * $s->sale_qty, 2, ',' , ' ');?>€</td>
     </tr>
 
   <?php endforeach;?>
@@ -44,7 +44,8 @@
   <p>Prix en euro</p>
 
   <div style="text-align:right">
-   <h4> Payé : <?php echo number_format($order->order_amt, 2, ',', ' ');?> €</h4>
+   <h4> <?php echo ($order->order_valid) ? 'Solde payée':'Transaction annulée'; ?> d'un montant de  : <?php echo number_format($order->order_amt, 2, ',', ' ');?> €</h4>
+
   </div>
 
 </body>

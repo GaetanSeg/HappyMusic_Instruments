@@ -241,7 +241,7 @@ function retour(){
 						$amount = htmlentities($response['PAYMENTINFO_0_AMT']);
 
 						//envoi d'un email au client
-						$this->email->from('supra3946@gmail.com');
+						$this->email->from('happymusicinstruments@gmail.com');
 						$this->email->to($user->email);
 						$this->email->subject('Vos achats sur HappyMusic-Instruments');
 						$this->email->message('<h2>Bonjour '.$user->firstname.', </h2>
@@ -317,4 +317,28 @@ public function facture($token=null) {
 
 }
 /********************************************************************************************************/
+public function delete($order_token=null){
+
+	if(!$order_token){
+		redirect();
+		exit;
+	}
+
+		$data =	$order_token;
+
+
+		$this->usermodel->delete_order($data);
+
+		if($this->input->is_ajax_request()){
+			$response = array(
+
+				'success'=>true,
+				'order_token'=>$order_token
+
+			);
+			echo json_encode($response);exit;
+		}
+		redirect('user');
+
+}
 }

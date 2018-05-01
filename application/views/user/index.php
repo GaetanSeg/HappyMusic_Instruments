@@ -1,5 +1,12 @@
-<h3>Mes achats</h3>
-<?php echo "Bienvenue ".$user->firstname." dans votre liste d'achats"; ?>
+<?php echo "<h4>Bienvenue ".$user->firstname." dans votre liste d'achats</h4>"; ?>
+
+<?php if(!$orders) : ?>
+  <h3 class="ml-3 mt-4"> Desoler vous n'avez aucune commande active </h3>
+
+<?php endif; ?>
+
+
+<?php if($orders): ?>
 <table class="table table-bordered table-striped">
   <thead>
     <th>N° de commande</th>
@@ -11,7 +18,7 @@
   </thead>
 
   <tbody>
-    <?php if($orders): ?>
+
       <?php foreach ($orders as $o): ?>
           <tr>
             <td> <a href="<?php echo site_url('user/commande/'.$o->order_token); ?>"><?php echo $o->order_token;?></a></td>
@@ -26,6 +33,7 @@
             </td>
           </tr>
       <?php endforeach; ?>
-    <?php endif ; ?>
+
   </tbody>
 </table>
+<?php endif ; ?>

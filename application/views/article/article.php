@@ -1,5 +1,5 @@
 <?php  if($articles):?>
-  <ul class="thumbnails">
+  <ul class="thumbnails mt-4 ">
     <li class="row">
       <?php foreach ($articles as $a): $show = site_url('article/show/'.$a->article_id);?>
           <div class="card" style="width: 18rem;">

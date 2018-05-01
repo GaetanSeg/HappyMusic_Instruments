@@ -35,12 +35,11 @@ public function article(){
 	}
 /********************************************************************************************************/
 public function categorie()
+public function categorie($categorie_id=null)
 {
 
 	$data = array(
-		'title'=>'Categorie',
-		'categorie'=>$this->categorie,
-		'articles'=>$this->sitemodel->get_articles_categorie($this->categorie->categorie_id),
+		'articles'=>$this->sitemodel->get_articles_categorie($categorie_id),
 		'content'=>$this->view_folder.__FUNCTION__
 	);
 	$this->load->view('template/content',$data);
@@ -108,7 +107,6 @@ public function delete($rowid=null){
 			echo json_encode($response);exit;
 		}
 		redirect('article/panier');
-
 
 }
 /********************************************************************************************************/

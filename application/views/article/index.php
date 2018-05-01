@@ -1,10 +1,10 @@
   <div class=" bg-dark"  >
     <div class="nav-scroller ">
       <nav class="nav d-flex justify-content-between" >
-        <?php foreach ($categories as $c): $show = site_url('article/show/'.$c->categorie_id);?>
+        <?php foreach ($categories as $c): $show = site_url('article/categorie/'.$c->categorie_id);?>
         <a class="p-2 text-white" href="<?php echo $show;?>"><?php echo $c->categorie_name;?></a>
         <?php endforeach; ?>
-        <a class="p-2 text-white" href="<?php echo site_url('article/categorie') ?>">Liste des articles </a>
+        <a class="p-2 text-white" href="<?php echo site_url('article/article') ?>">Liste des articles </a>
       </nav>
     </div>
   </div>
@@ -20,7 +20,7 @@
         <?php  if($categories):?>
         <ul class="thumbnails">
               <li class="row">
-                <?php foreach ($categories as $c): $show = site_url('article/show/'.$c->categorie_id);?>
+                <?php foreach ($categories as $c): $show = site_url('article/categorie/'.$c->categorie_id);?>
                   <div class="ccol-sm-6 col-md-4">
                     <h3><?php echo $c->categorie_name;?></h3>
                     <a href="<?php echo $show;?>"><img src="<?php echo $this->pictureCategorie_path.$c->categorie_image;?>" alt="<?php $c->categorie_name; ?>" alt=""width="156" height="156"></a>

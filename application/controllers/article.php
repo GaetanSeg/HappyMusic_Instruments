@@ -34,7 +34,6 @@ public function article(){
 			$this->load->view('template/content',$data);
 	}
 /********************************************************************************************************/
-public function categorie()
 public function categorie($categorie_id=null)
 {
 

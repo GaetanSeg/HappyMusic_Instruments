@@ -2,7 +2,7 @@
   <ul class="thumbnails mt-4 ">
     <li class="row">
       <?php foreach ($articles as $a): $show = site_url('article/show/'.$a->article_id);?>
-          <div class="card" style="width: 18rem;">
+          <div class="card mb-3" style="width: 18rem;">
             <a href="<?php echo $show;?>"><img src="<?php echo $this->picture_path.$a->image_name;?>" alt="<?php $a->title; ?>"width="156" height="156"></a>
 
             <div class="card-body">

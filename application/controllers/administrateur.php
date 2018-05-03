@@ -14,11 +14,11 @@ class Administrateur extends CI_Controller {
 	}
 /********************************************************************************************************/
 
-/********************************************************************************************************/
 
 public function admin(){
 
 			$data=array(
+
 				'title'=>'Bienvenue sur la boutique',
 				'users'=>$this->adminmodel->getAllUser(),
 				'content'=>$this->view_folder.__FUNCTION__
@@ -33,15 +33,26 @@ public function editUser($user_id=null)/*valeur par défaut*/{
 				redirect('administrateur/admin');
 				exit;
 		}
-
 		else{
 					$user= $this->adminmodel->getOneUser($user_id);
 					$data=array(
 						'user'=>$user,
 						'content'=>$this->view_folder.__FUNCTION__
 					);
-
-					$this->load->view('template/content',$data);
+						$userUpdate=array(
+								'email'=>$this->input->post('email'),
+								'password'=>sha1(md5($this->input->post('password'))),
+								'address'=>$this->input->post('address'),
+								'city'=>$this->input->post('city'),
+								'postal'=>$this->input->post('cp'),
+								'user_country_id'=>$this->input->post('country'),
+								'phone'=>$this->input->post('phone'),
+								'firstname'=>$this->input->post('firstname'),
+								'lastname'=>$this->input->post('lastname'),
+							);
+							print_r($userUpdate);
+							$this->adminmodel->editUser($userUpdate);
 		}
+			$this->load->view('template/content',$data);
 	}
 }

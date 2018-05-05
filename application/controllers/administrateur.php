@@ -28,15 +28,51 @@ public function admin(){
 /********************************************************************************************************/
 public function editUser($user_id=null)/*valeur par défaut*/{
 
-
-
 					$user= $this->adminmodel->getOneUser($user_id);
 					$data=array(
 						'user'=>$user,
 						'content'=>$this->view_folder.__FUNCTION__
 					);
-
 						$this->load->view('template/content',$data);
-						
+
+
+						$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]');
+						$this->form_validation->set_rules('password','Mot de passe','trim|required|min_length[5]');
+						$this->form_validation->set_rules('lastname','Nom','trim|required');
+						$this->form_validation->set_rules('firstname','Prénom','trim|required');
+						$this->form_validation->set_rules('address','Adresse','trim|required');
+						$this->form_validation->set_rules('city','Ville','trim|required');
+						$this->form_validation->set_rules('cp','Code postal','trim|required');
+						$this->form_validation->set_rules('country','Pays','trim|required|is_natural_no_zero');
+						$this->form_validation->set_rules('phone','Téléphone','trim|required|integer');
+
+						$this->form_validation->run();
+
+							$user=array(
+
+									'email'=>$this->input->post('email'),
+									'firstname'=>$this->input->post('firstname'),
+									'lastname'=>$this->input->post('lastname'),
+									'address'=>$this->input->post('address'),
+									'postal'=>$this->input->post('cp'),
+									'user_country_id'=>$this->input->post('country'),
+									'city'=>$this->input->post('city'),
+									'phone'=>$this->input->post('phone'),
+									'password'=>sha1(md5($this->input->post('password')))
+								);
+
+
+
+								if (!$this->adminmodel->editUser($user_id,$user)) {
+
+										print_r($user);
+
+									if(!empty($user['email'])){
+
+										redirect('administrateur/admin');
+
+									}
+								}
 	}
+
 }

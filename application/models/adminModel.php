@@ -35,12 +35,10 @@ function getOneUser($user_id){
 		}
 	}
 
-function editUser($id, $user){
-		$nom = $user['lastname'];
-		print_r($user);
-		$this->db->set('lastname', 'Bonjour')
-		->where('user_id', $id)
-		->update('users');
-		return true;
-	}
+function editUser($user_id,$user){
+
+			$this->db->where('user_id',$user_id);
+			$this->db->update('users', $user);
+
+		}
 }

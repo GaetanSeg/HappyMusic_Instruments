@@ -1,6 +1,6 @@
 <?php if($user):?>
   <h2 class="ml-3">Editions d'un utilisateurs</h2>
-    <?php echo form_open('administrateur/editUser',array('class'=>'form-horizontal')); ?>
+    <?php echo form_open('',array('class'=>'form-horizontal')); ?>
 
     <div class="card bg-light ml-4 mb-3" style="max-width: 60rem;">
     <div class="form-row">

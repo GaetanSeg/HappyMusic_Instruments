@@ -1,5 +1,5 @@
 <?php echo "<h4>Bienvenue ".$user->firstname." dans votre liste d'achats</h4>"; ?>
-
+<?php print_r($this->session->userdata()); ?>
 <?php if(!$orders) : ?>
   <h3 class="ml-3 mt-4"> Desoler vous n'avez aucune commande active </h3>
 

@@ -35,8 +35,9 @@ public function editUser($user_id=null)/*valeur par défaut*/{
 					);
 						$this->load->view('template/content',$data);
 
+/*      */
 
-						$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]');
+					/*	$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]');
 						$this->form_validation->set_rules('password','Mot de passe','trim|required|min_length[5]');
 						$this->form_validation->set_rules('lastname','Nom','trim|required');
 						$this->form_validation->set_rules('firstname','Prénom','trim|required');
@@ -45,8 +46,6 @@ public function editUser($user_id=null)/*valeur par défaut*/{
 						$this->form_validation->set_rules('cp','Code postal','trim|required');
 						$this->form_validation->set_rules('country','Pays','trim|required|is_natural_no_zero');
 						$this->form_validation->set_rules('phone','Téléphone','trim|required|integer');
-
-						$this->form_validation->run();
 
 							$user=array(
 
@@ -63,8 +62,9 @@ public function editUser($user_id=null)/*valeur par défaut*/{
 
 
 
-								if (!$this->adminmodel->editUser($user_id,$user)) {
+								if ($this->form_validation->run() == FALSE) {
 
+										$this->adminmodel->editUser($user_id,$user);
 										print_r($user);
 
 									if(!empty($user['email'])){
@@ -72,7 +72,7 @@ public function editUser($user_id=null)/*valeur par défaut*/{
 										redirect('administrateur/admin');
 
 									}
-								}
+								}*/
 	}
 
 }

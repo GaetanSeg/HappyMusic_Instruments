@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 05, 2018 at 02:35 PM
+-- Generation Time: May 05, 2018 at 07:18 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.4
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `happy_music_instruments`
 --
+CREATE DATABASE IF NOT EXISTS `happy_music_instruments` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `happy_music_instruments`;
 
 -- --------------------------------------------------------
 
@@ -453,7 +455,8 @@ INSERT INTO `sales` (`sale_id`, `sale_user_id`, `sale_article_id`, `sale_amt`, `
 (31, 7, 2, 289, 1, '2018-04-29 20:25:52', 'EC-7RG24554DW633514F', 1),
 (32, 7, 2, 289, 1, '2018-04-29 20:37:29', 'EC-9BP194556H947223J', 1),
 (33, 7, 5, 599, 1, '2018-04-29 20:41:05', 'EC-1MR79113KE4066920', 1),
-(34, 7, 2, 289, 1, '2018-05-01 10:07:28', 'EC-90F63176YC1357459', 1);
+(34, 7, 2, 289, 1, '2018-05-01 10:07:28', 'EC-90F63176YC1357459', 1),
+(35, NULL, 5, 599, 4, '2018-05-05 18:09:10', 'EC-1V831803AA9548824', 1);
 
 -- --------------------------------------------------------
 
@@ -481,7 +484,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `address`, `city`, `postal`, `user_country_id`, `phone`, `date_user`, `firstname`, `lastname`, `roles`) VALUES
-(19, 'supra3946@gmail.com', 'fe703d258c7ef5f50b71e06565a65aa07194907f', 'rue de la musique', 'Binche', '7134', 21, '0494864497', '2018-05-05 08:19:33', 'gaetan', 'Bonjour', 0);
+(19, 'supra3946@gmail.com', 'fe703d258c7ef5f50b71e06565a65aa07194907f', 'rue de la musique', 'Binche', '7134', 0, '494864497', '2018-05-05 08:19:33', 'gaetan', 'seggio', 0);
 
 --
 -- Indexes for dumped tables
@@ -574,7 +577,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `prices`
@@ -586,7 +589,7 @@ ALTER TABLE `prices`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `users`

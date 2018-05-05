@@ -1,4 +1,4 @@
-<?php echo "<h4>Bienvenue dans votre liste d'achats</h4>"; ?>
+<?php echo "<h4>Bienvenue ".$user->firstname." dans votre liste d'achats</h4>"; ?>
 
 <?php if(!$orders) : ?>
   <h3 class="ml-3 mt-4"> Desoler vous n'avez aucune commande active </h3>

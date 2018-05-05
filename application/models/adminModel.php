@@ -26,7 +26,6 @@ function getOneUser($user_id){
 
 		$query = $this->db->select('*')->from('users as u')
 		->where('u.user_id',$user_id)
-		->join('countries as c ','u.user_country_id = c.country_id')
 		->order_by('u.user_id')
 		->get();
 
@@ -36,10 +35,12 @@ function getOneUser($user_id){
 		}
 	}
 
-function editUser($userUpdate){
-
-		$this->db->update('users',$userUpdate);
+function editUser($id, $user){
+		$nom = $user['lastname'];
+		print_r($user);
+		$this->db->set('lastname', 'Bonjour')
+		->where('user_id', $id)
+		->update('users');
 		return true;
-
 	}
 }

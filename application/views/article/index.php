@@ -1,10 +1,11 @@
   <div class=" bg-dark"  >
     <div class="nav-scroller ">
       <nav class="nav d-flex justify-content-between" >
+
         <?php foreach ($categories as $c): $show = site_url('article/categorie/'.$c->categorie_id);?>
-        <a class="p-2 text-white" href="<?php echo $show;?>"><?php echo $c->categorie_name;?></a>
+            <a class="p-2 text-white ml-3 mr-4" href="<?php echo $show;?>"><?php echo $c->categorie_name;?></a>
         <?php endforeach; ?>
-        <a class="p-2 text-white" href="<?php echo site_url('article/article') ?>">Liste des articles </a>
+
       </nav>
     </div>
   </div>

@@ -107,4 +107,11 @@ function get_articles_categorie($categorie_id){
 
 		return true;
 	}
+
+	function updateArticle($article){
+
+		$this->db->update('articles',$article);
+		return true;
+
+	}
 }

@@ -65,7 +65,7 @@ function get_user($param){
 /********************************************************************************************************/
 function is_logged(){
 
-	return $this->session->userdata('lastname')&& $this->session->userdata('logged');
+	return $this->session->userdata('lastname') && $this->session->userdata('logged');
 }
 /********************************************************************************************************/
 function get_orders_user($user_id){

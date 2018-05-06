@@ -74,5 +74,6 @@ public function editUser($user_id=null)/*valeur par défaut*/{
 									}
 								}*/
 	}
+	
 
 }

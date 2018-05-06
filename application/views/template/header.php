@@ -60,15 +60,12 @@
             </li>
           <?php else: ?>
               <li class="nav-item">
-                <a class="nav-link text-white" href="<?php echo site_url('user');?>">Mes achats</a>
+                <a class="nav-link text-white" href="<?php echo site_url('user');?>">Mon compte </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="<?php echo site_url('user/logout');?>">Déconnexion</a>
               </li>
           <?php endif; ?>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="<?php echo site_url('administrateur/admin');?>">Administrateur</a>
-                </li>
           <?php if($this->cart->contents()): ?>
           <li class="nav-item">
             <a class="nav-link disabled text-white" href="<?php echo site_url('article/panier'); ?>">Mon panier(<span class="nb_article"><?php echo $this->cart->total_items(); ?></span>)</a>
@@ -93,4 +90,3 @@
       </div>
     <?php echo form_close();?>
   <?php endif; ?>
-  

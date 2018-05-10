@@ -1,10 +1,10 @@
-# AsianMarket
+# HappyMusic_Instruments
 
 Site d'instruments de musique et de logiciel musical. (Projet d'étude)
 
 ## Version
   PHP 7.2.4
-  Apache/2.4.33 
+  Apache/2.4.33
   MySQL Ver 14.14
 
 ## Installation

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 05, 2018 at 07:18 PM
+-- Generation Time: May 10, 2018 at 05:22 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.4
 
@@ -34,6 +34,8 @@ CREATE TABLE `articles` (
   `article_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `amount` float NOT NULL,
+  `image_name` varchar(255) NOT NULL,
   `article_categorie_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,12 +43,13 @@ CREATE TABLE `articles` (
 -- Dumping data for table `articles`
 --
 
-INSERT INTO `articles` (`article_id`, `title`, `description`, `article_categorie_id`) VALUES
-(1, 'Yamaha Cx3', 'Le Yamaha C3X ENSPIRE PRO est un piano acoustique équipé d\'un système de jeu automatique; en particulier le système Yamaha Disklavier Enspire.\r\n\r\nCe système marie le savoir faire traditionnel et des techniques d’ingénieries innovantes afin de créer un instrument unique : le piano de divertissement parfait qui permet d’enregistrer toutes les performances en les restituant par la suite dans les moindres détails.', 1),
-(2, 'Fender CD-140SCE Nat', 'Table épicéa massif\r\nDos et éclisses acajou\r\nBarrages en X sculpté\r\nChevalet palissandre\r\nTouche palissandre\r\nContrôles volume, basses, mediums, aiguës, phase\r\nPréampli Fishman Presys plus avec accordeur\r\nRadius 12\" (305 mm)\r\nFrettes vintage\r\nAccastillage chrome\r\nManche acajou', 2),
-(5, 'Avid Sibelius', 'Version actuelle avec 12 mois de mise à niveau et plan de support\r\nInterface utilisateur orientée tâche\r\nBibliothèque de sons professionnelle (36 Go)\r\nLogiciel de notation natif 64 bits\r\nSupport VST\r\nReWire\r\nOptions graphiques et typographiques avancées\r\nExport de partition en fichiers PDF\r\nImport / export MusicXML 3.0\r\nÉmulation rapide du mode d\'entrée d\'une note depuis le logiciel Finale\r\nNouvelle fenêtre de timeline pour travailler avec les grandes partitions\r\nLecture plus expressive avec Espressivo 2.0\r\nÉcoute précise grâce à une meilleure interprétation des notes\r\nOption pour médias sociaux pour YouTube, Facebook, SoundCloud\r\nExportation de partitions par email, audio et vidéo\r\nExportation de la vidéo en haute résolution 1080p\r\nExporter vers Avid Scorch scores sur iPad\r\nContient le logiciel Note PhotoScore Lite logiciel de numérisation et de détection audio Audio Lite\r\nLangues suivantes: anglais, français, allemand, italien, japonais, chinois simplifié, espagnol, portugais brésilien et russe\r\nAttention: licence seule - aucun média (CD / DVD) inclus, nécessite le téléchargement depuis le site Web du fabricant\r\nConfiguration minimale du système (configuration minimum):\r\nPC: Windows 7 ou 8 (64 bit, pas Windows RT)\r\nMAC: Mac OS X 10.9 ou plus récent\r\n1 GB de RAM ou plus\r\n1 GB d\'espace libre sur le disque dur pour le logiciel Sibelius\r\n34 GB d\'espace disque en plus pour bibliothèque Sibelius Sounds 7.5 (installation facultative)\r\nLecteur de DVD- ROM', 5),
-(6, 'Selmer SE-A3S Series III', 'Série III\r\nNouveau design 2010\r\nCorps gravé à la main\r\nCorps, bocal et pavillon en laiton\r\nClé de Fa# aigu\r\nTampons en cuir\r\nRésonateurs en métal\r\nFinition: Argenté\r\nBec S80 C* et étui souple incl.', 6),
-(10, 'Steinway et sons', 'Le plus petit piano à queue de STEINWAY & SONS fut introduit dans les années 1930 pour que le son puissant d\'un STEINWAY puisse se déployer même lorsqu\'on ne dispose que d\'un espace restreint. Sinon vous ne trouverez ailleurs un volume sonore d\'une telle richesse que sur de grands modèles.', 1);
+INSERT INTO `articles` (`article_id`, `title`, `description`, `amount`, `image_name`, `article_categorie_id`) VALUES
+(1, 'Selmer SE-A3S Series III', 'Série III Nouveau design 2010 Corps gravé à la main Corps, bocal et pavillon en laiton Clé de Fa# aigu Tampons en cuir Résonateurs en métal Finition: Argenté Bec S80 C* et étui souple incl.', 2524.67, 'saxophone.png', 6),
+(2, 'Yamaha Cx3', 'Vestibulum eros lacus, sollicitudin at volutpat non, bibendum et lorem. In purus tellus, cursus vel massa sed, tempus varius justo. Quisque egestas felis arcu, ut posuere felis porttitor ut. Vestibulum leo tellus, pellentesque ut dictum in, auctor at dolor. Nam ut risus vel urna fringilla malesuada. In id lacus id ex vehicula consectetur. Phasellus sodales ac libero et facilisis. Maecenas placerat vitae purus et interdum. Mauris et nisl nulla. Aenean tristique blandit feugiat. Donec sed nibh rhoncus orci egestas ullamcorper in sed ante. In hac habitasse platea dictumst. Nam ultricies a neque a varius. Etiam sed elementum erat. In hac habitasse platea dictumst.', 27000, 'cx3.jpg', 1),
+(5, 'FEURICH 161 PROFESSIONAL I', 'Le piano à queue Feurich 161 Professional I est le premier modèle de la gamme des pianos à queue Feurich. Le son de ce piano se distingue par des basses clairement définies, des médiums riche en nuances et des aigus d\'une belle longueur.  Ce piano est particulièrement apprécié dans le monde entier, que ce soit pour l\'enseignement ou pour l’accompagnement.', 11500, 'feurich161.jpeg', 1),
+(6, 'Steinway et sons', 'Ce piano a bénéficié d\'une restauration soignée et complète: structure harmonique, cordes, chevilles, marteaux, meuble.  Doté d\'une richesse de timbre raffinée, signature de la marque, la sonorité déploie une exceptionnelle dynamique. Grande sensibilité aux nuances servie par un toucher très précis.', 45657, 'steinwaymodels.png', 1),
+(10, 'Fender ', 'Table épicéa massifDos et éclisses acajouBarrages en X sculptéChevalet palissandreTouche palissandreContrôles volume, basses, mediums, aiguës, phasePréampli Fishman Presys plus avec accordeurRadius 12', 289, 'Fender1.png', 2),
+(22, 'Avid Sibelius', 'Version actuelle de Pro Tools en tant que carte d\'activation Licence permanente avec plan de support et toutes les mises à niveau pendant 12 mois Jusqu\'à 32 entrées et sorties simultanément, 128 pistes audio et 512 pistes MIDI et instruments Nombre illimité de bus Contient plus de 60 instruments virtuels et effets avec plug-ins Channel Strip de console System 5 (EQ, Compresseur / Limiteur, Expander / Gate avec routing flexible) Avid Cloud Collaboration avec 1 GB de stockage Nombreuses fonctions telles que le Bounce hors ligne, la compensation automatique de délai, la détection de pulse (Beat Detective) multipistes,Elastic Time und Pitch, Clip Gain, fondus en temps réel, mesure du niveau de canal étendue avec affichage de réduction de gain etc. Intégration de contrôleurs matériels via le protocole EUCON et Mackie HUI Prise en chargedes pilotes ASIO et Core Audio pour l\'intégration de matériel audio tiers Contenu de la livraison: carte de licence, clé d\'autorisation Pace iLok Remarque: licence logiciel sans support de données: téléchargement requis!  Spécifications:  Formats de plugin pris en charge: AAXnative Système requis: à partir de Win7 (64 bits), de Mac OSX 10.8, processeur Intel Core i5, 8 GB de RAM, 15 GB HD, connexion Internet', 599, 'sibelius.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -392,6 +395,14 @@ CREATE TABLE `orders` (
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `order_user_id`, `order_amt`, `order_total_items`, `order_token`, `order_paypal_infos`, `order_valid`, `order_date`) VALUES
+(1, 21, 2567, 1, 'EC-5SP83194L7634214U', 'a:26:{s:5:\"TOKEN\";s:20:\"EC-5SP83194L7634214U\";s:28:\"SUCCESSPAGEREDIRECTREQUESTED\";s:5:\"false\";s:9:\"TIMESTAMP\";s:20:\"2018-05-10T10:32:44Z\";s:13:\"CORRELATIONID\";s:13:\"98a0ac6bbd20e\";s:3:\"ACK\";s:7:\"Success\";s:7:\"VERSION\";s:2:\"97\";s:5:\"BUILD\";s:8:\"46219369\";s:23:\"INSURANCEOPTIONSELECTED\";s:5:\"false\";s:23:\"SHIPPINGOPTIONISDEFAULT\";s:5:\"false\";s:27:\"PAYMENTINFO_0_TRANSACTIONID\";s:17:\"0L356496RA905223C\";s:29:\"PAYMENTINFO_0_TRANSACTIONTYPE\";s:15:\"expresscheckout\";s:25:\"PAYMENTINFO_0_PAYMENTTYPE\";s:7:\"instant\";s:23:\"PAYMENTINFO_0_ORDERTIME\";s:20:\"2018-05-10T10:32:43Z\";s:17:\"PAYMENTINFO_0_AMT\";s:7:\"2567.00\";s:20:\"PAYMENTINFO_0_FEEAMT\";s:5:\"87.63\";s:20:\"PAYMENTINFO_0_TAXAMT\";s:4:\"0.00\";s:26:\"PAYMENTINFO_0_CURRENCYCODE\";s:3:\"EUR\";s:27:\"PAYMENTINFO_0_PAYMENTSTATUS\";s:9:\"Completed\";s:27:\"PAYMENTINFO_0_PENDINGREASON\";s:4:\"None\";s:24:\"PAYMENTINFO_0_REASONCODE\";s:4:\"None\";s:35:\"PAYMENTINFO_0_PROTECTIONELIGIBILITY\";s:8:\"Eligible\";s:39:\"PAYMENTINFO_0_PROTECTIONELIGIBILITYTYPE\";s:51:\"ItemNotReceivedEligible,UnauthorizedPaymentEligible\";s:35:\"PAYMENTINFO_0_SELLERPAYPALACCOUNTID\";s:32:\"testBusinessHappyMusic@gmail.com\";s:37:\"PAYMENTINFO_0_SECUREMERCHANTACCOUNTID\";s:13:\"4D68LYSYTQR3U\";s:23:\"PAYMENTINFO_0_ERRORCODE\";s:1:\"0\";s:17:\"PAYMENTINFO_0_ACK\";s:7:\"Success\";}', 1, '2018-05-10 10:30:52'),
+(3, 26, 289, 1, 'EC-392374214S098692C', 'a:26:{s:5:\"TOKEN\";s:20:\"EC-392374214S098692C\";s:28:\"SUCCESSPAGEREDIRECTREQUESTED\";s:5:\"false\";s:9:\"TIMESTAMP\";s:20:\"2018-05-10T17:19:44Z\";s:13:\"CORRELATIONID\";s:13:\"41d5a14880d67\";s:3:\"ACK\";s:7:\"Success\";s:7:\"VERSION\";s:2:\"97\";s:5:\"BUILD\";s:8:\"46219369\";s:23:\"INSURANCEOPTIONSELECTED\";s:5:\"false\";s:23:\"SHIPPINGOPTIONISDEFAULT\";s:5:\"false\";s:27:\"PAYMENTINFO_0_TRANSACTIONID\";s:17:\"1BL63776DA067845C\";s:29:\"PAYMENTINFO_0_TRANSACTIONTYPE\";s:15:\"expresscheckout\";s:25:\"PAYMENTINFO_0_PAYMENTTYPE\";s:7:\"instant\";s:23:\"PAYMENTINFO_0_ORDERTIME\";s:20:\"2018-05-10T17:19:44Z\";s:17:\"PAYMENTINFO_0_AMT\";s:6:\"289.00\";s:20:\"PAYMENTINFO_0_FEEAMT\";s:5:\"10.18\";s:20:\"PAYMENTINFO_0_TAXAMT\";s:4:\"0.00\";s:26:\"PAYMENTINFO_0_CURRENCYCODE\";s:3:\"EUR\";s:27:\"PAYMENTINFO_0_PAYMENTSTATUS\";s:9:\"Completed\";s:27:\"PAYMENTINFO_0_PENDINGREASON\";s:4:\"None\";s:24:\"PAYMENTINFO_0_REASONCODE\";s:4:\"None\";s:35:\"PAYMENTINFO_0_PROTECTIONELIGIBILITY\";s:8:\"Eligible\";s:39:\"PAYMENTINFO_0_PROTECTIONELIGIBILITYTYPE\";s:51:\"ItemNotReceivedEligible,UnauthorizedPaymentEligible\";s:35:\"PAYMENTINFO_0_SELLERPAYPALACCOUNTID\";s:32:\"testBusinessHappyMusic@gmail.com\";s:37:\"PAYMENTINFO_0_SECUREMERCHANTACCOUNTID\";s:13:\"4D68LYSYTQR3U\";s:23:\"PAYMENTINFO_0_ERRORCODE\";s:1:\"0\";s:17:\"PAYMENTINFO_0_ACK\";s:7:\"Success\";}', 1, '2018-05-10 17:14:06');
+
 -- --------------------------------------------------------
 
 --
@@ -456,7 +467,11 @@ INSERT INTO `sales` (`sale_id`, `sale_user_id`, `sale_article_id`, `sale_amt`, `
 (32, 7, 2, 289, 1, '2018-04-29 20:37:29', 'EC-9BP194556H947223J', 1),
 (33, 7, 5, 599, 1, '2018-04-29 20:41:05', 'EC-1MR79113KE4066920', 1),
 (34, 7, 2, 289, 1, '2018-05-01 10:07:28', 'EC-90F63176YC1357459', 1),
-(35, NULL, 5, 599, 4, '2018-05-05 18:09:10', 'EC-1V831803AA9548824', 1);
+(35, NULL, 5, 599, 4, '2018-05-05 18:09:10', 'EC-1V831803AA9548824', 1),
+(36, 21, 2, 289, 2, '2018-05-07 17:32:15', 'EC-2BX27178SM647611Y', 1),
+(37, 21, 6, 2567, 1, '2018-05-10 10:30:52', 'EC-5SP83194L7634214U', 1),
+(38, 26, 10, 289, 1, '2018-05-10 17:08:13', 'EC-7DW83861PF9874054', 0),
+(39, 26, 10, 289, 1, '2018-05-10 17:14:06', 'EC-392374214S098692C', 1);
 
 -- --------------------------------------------------------
 
@@ -484,7 +499,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `address`, `city`, `postal`, `user_country_id`, `phone`, `date_user`, `firstname`, `lastname`, `roles`) VALUES
-(19, 'supra3946@gmail.com', 'fe703d258c7ef5f50b71e06565a65aa07194907f', 'rue de la musique', 'Binche', '7134', 0, '494864497', '2018-05-05 08:19:33', 'gaetan', 'seggio', 0);
+(20, 'supra3946@gmail.com', 'fe703d258c7ef5f50b71e06565a65aa07194907f', 'rue de la musique', 'Binche', '7134', 21, '0494864497', '2018-05-06 20:03:38', 'gaetan', 'seggio', 1),
+(26, 'test@test.com', 'fe703d258c7ef5f50b71e06565a65aa07194907f', 'rue de la musique', 'Binche', '7134', 21, '0494864497', '2018-05-10 17:07:25', 'test', 'Ramu', 0);
 
 --
 -- Indexes for dumped tables
@@ -553,7 +569,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -577,7 +593,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prices`
@@ -589,13 +605,13 @@ ALTER TABLE `prices`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

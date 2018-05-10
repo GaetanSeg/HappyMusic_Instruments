@@ -1,15 +1,16 @@
 <html>
 <head>
-  <title></title>
+  <title>Votre Facture</title>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style.css">
 </head>
 <body>
 
   <div style="text-align:right">
     <p>Facture : <?php echo $order->order_token;?></p>
-    <p>Shop</p>
-    <p>2 rue des plantes</p>
-    <p>75 000 Paris</p>
+    <p>HappyMusic-Instruments</p>
+    <p>271 Rue de la musique</p>
+    <p>7130 BINCHE</p>
     <p>SIRET : 5225123985752</p>
     <p>Date : <?php echo date('d-m-Y',strtotime($order->order_date));?></p>
   </div>
@@ -35,8 +36,8 @@
     <tr>
       <td><?php echo $article->title;?></td>
       <td><?php echo $s->sale_qty;?></td>
-      <td><?php echo number_format($article->price_amount, 2, ',', ' ');?>€</td>
-      <td><?php echo number_format($article->price_amount * $s->sale_qty, 2, ',' , ' ');?>€</td>
+      <td><?php echo number_format($article->amount, 2, ',', ' ');?>€</td>
+      <td><?php echo number_format($article->amount * $s->sale_qty, 2, ',' , ' ');?>€</td>
     </tr>
 
   <?php endforeach;?>

@@ -1,4 +1,4 @@
-<?php if(! $user->roles == 1 ) : ?>
+<?php if( !$user->roles == 1 ) : ?>
       <?php echo "<h4>Bienvenue ".$user->firstname." dans votre liste d'achats</h4>"; ?>
 
       <?php if(!$orders) : ?>

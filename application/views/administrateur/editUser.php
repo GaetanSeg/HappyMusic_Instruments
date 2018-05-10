@@ -1,9 +1,12 @@
 <?php if($user):?>
   <h2 class="ml-3">Editions d'un utilisateurs</h2>
-    <?php echo form_open('',array('class'=>'form-horizontal')); ?>
+    <?php echo form_open('Administrateur/editUser',array('class'=>'form-horizontal')); ?>
 
     <div class="card bg-light ml-4 mb-3" style="max-width: 60rem;">
+
     <div class="form-row">
+      <input name="user_id" type="hidden" class="form-control"placeholder="id" value="<?php echo $user->user_id; ?>">
+
       <div class="form-group col-md-3 ml-5 ">
         <label for="inputEmail4">Email</label>
         <input name="email" type="email" class="form-control"placeholder="Email" value="<?php echo $user->email; ?>">
@@ -33,6 +36,15 @@
       <div class="form-group col-md-3 ml-5">
         <label for="inputCity">Ville</label>
         <input type="text" class="form-control" name="city" placeholder="Ville" value="<?php echo $user->city; ?>" >
+      </div>
+      <div class="form-group col-md-5">
+        <label for="inputState">State</label>
+          <select   class="form-control" name="country">
+            <option value="0">Votre Pays</option>
+            <?php foreach($countries as $c):?>
+              <option value="<?php echo $c->country_id; ?>"<?php echo set_select('country',$c->country_id);?>><?php echo $c->country_name;?></option>
+            <?php  endforeach; ?>
+          </select>
       </div>
       <div class="form-group ">
         <label for="inputZip">Téléphone</label>

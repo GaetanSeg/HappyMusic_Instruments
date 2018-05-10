@@ -11,8 +11,7 @@ class Sitemodel extends CI_Model {
 	function getAll(){
 		$query = $this->db->select('*')->from('articles as a')
 
-		->join('prices as p','p.price_article_id = a.article_id','left')
-		->join('images as img','img.image_article_id = a.article_id','left')
+
 		->join('categories as c','c.categorie_id = a.article_categorie_id','left')
 		->order_by('a.article_categorie_id')
 		->get();
@@ -31,8 +30,6 @@ function get_articles_categorie($categorie_id){
 
 	$query = $this->db->select('*')->from('articles as  a')
 	->where('a.article_categorie_id',$categorie_id)
-	->join('prices as p','p.price_article_id = a.article_id','left')
-	->join('images as img','img.image_article_id = a.article_id','left')
 	->join('categories as c','c.categorie_id = a.article_categorie_id','left')
 	->get();
 
@@ -49,8 +46,6 @@ function get_articles_categorie($categorie_id){
 	function getOne($article_id){
 		$query = $this->db->select('*')->from('articles as a')
 		->where('a.article_id',$article_id)
-		->join('prices as p','p.price_article_id = a.article_id','left')
-		->join('images as img','img.image_article_id = a.article_id','left')
 		->order_by('a.article_id')
 		->get();
 		if ($query->num_rows()>0) {
@@ -108,10 +103,26 @@ function get_articles_categorie($categorie_id){
 		return true;
 	}
 
-	function updateArticle($article){
+	function updateArticle($articleUpdate){
 
-		$this->db->update('articles',$article);
+		$this->db->where('article_id',$articleUpdate['article_id'])->update('articles',$articleUpdate);
 		return true;
 
 	}
+
+	function delete_article($article_id){
+
+				$this->db->where('article_id', $article_id);
+				$this->db->delete('articles');
+
+				return true;
+			}
+
+	function addArticle($article){
+
+				$this->db->insert('articles',$article);
+				return true;
+
+			}
+
 }

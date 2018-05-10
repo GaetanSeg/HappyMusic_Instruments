@@ -74,7 +74,7 @@ public function add($article_id=null){
 		$data =  array(
 			'id'=>$article->article_id,
 			'qty'=>1,
-			'price'=>$article->price_amount,
+			'price'=>$article->amount,
 			'name'=>$article->title
 		 );
 		 $this->cart->insert($data);
@@ -152,4 +152,127 @@ public function cancel(){
 	echo 'paiement annulé';
 
 	}
+
+	public function deleteArticle($article_id=null){
+
+		if(!$article_id){
+			redirect();
+			exit;
+		}
+
+			$data =	$article_id;
+
+
+			$this->sitemodel->delete_article($data);
+
+			if($this->input->is_ajax_request()){
+				$response = array(
+
+					'success'=>true,
+					'article_id'=>$article_id
+
+				);
+				echo json_encode($response);exit;
+			}
+			redirect('article/article');
+
+	}
+
+public function ajoutArticle(){
+
+		if(!$this->usermodel->is_logged()){
+
+				redirect('user');exit;
+			}
+
+			$this->form_validation->set_rules('title',"titre de l'article",'required');
+			$this->form_validation->set_rules('description','Description','trim|required|min_length[30]');
+			$this->form_validation->set_rules('categorie','categorie','trim|required|is_natural_no_zero');
+			$this->form_validation->set_rules('amount','amount','trim|required|is_natural_no_zero');
+			$this->form_validation->set_rules('image_name','image_name','trim|required|is_natural_no_zero');
+
+
+			if($this->form_validation->run()){
+
+				$article=array(
+
+						'title'=>$this->input->post('title'),
+						'description'=>$this->input->post('description'),
+						'article_categorie_id'=>$this->input->post('categorie'),
+						'amount'=>$this->input->post('price'),
+						'image_name'=>$this->input->post('image_name')
+
+					);
+					if($this->sitemodel->addArticle($article)){
+
+						$this->session->set_flashdata('success',"ajout d'article reussi ");
+						redirect(current_url());exit;
+
+					}else{
+						throw new Exception('Une erreur est survenue,veuillez recommencer ');
+					}
+			}
+
+
+		$data=array(
+			'title'=>"Ajout d'article-HappyMusic",
+			'categories'=>$this->sitemodel->getCategorie(),
+			'content'=>$this->view_folder.__FUNCTION__
+		);
+
+		$this->load->view('template/content',$data);
+	}
+
+
+
+
+	public function updateArticle($article_id=null){
+
+		$article = $this->sitemodel->getOne($article_id);
+
+		$data = array(
+			'title'=>"edition d'un article-HappyMusic",
+			'categories'=>$this->sitemodel->getCategorie(),
+			'article'=>$article,
+			'content'=>$this->view_folder.__FUNCTION__
+		);
+
+		if(!$this->usermodel->is_logged()){
+
+				redirect('user');exit;
+			}
+
+			$this->form_validation->set_rules('article_id',"article_id",'required');
+			$this->form_validation->set_rules('title',"titre de l'article",'required');
+			$this->form_validation->set_rules('description','Description','trim|required|min_length[30]');
+			$this->form_validation->set_rules('categorie','categorie','trim|required|is_natural_no_zero');
+			$this->form_validation->set_rules('amount','amount');
+			$this->form_validation->set_rules('image_name','image_name');
+
+
+			if($this->form_validation->run()){
+
+				$articleUpdate=array(
+						'article_id'=>$this->input->post('article_id'),
+						'title'=>$this->input->post('title'),
+						'description'=>$this->input->post('description'),
+						'article_categorie_id'=>$this->input->post('categorie'),
+						'amount'=>$this->input->post('price'),
+						'image_name'=>$this->input->post('image_name')
+
+					);
+					if($this->sitemodel->updateArticle($articleUpdate)){
+
+						$this->session->set_flashdata('success',"ajout d'article reussi ");
+						redirect(current_url());exit;
+
+					}else{
+						throw new Exception('Une erreur est survenue,veuillez recommencer ');
+					}
+			}
+
+		
+		$this->load->view('template/content',$data);
+	}
+
 }

@@ -11,7 +11,7 @@
               <hr>
               <p><?php echo character_limiter($a->description,80);?></p>
               <a href="<?php echo $show; ?>" class="btn btn-outline-primary">Voir plus...</a>
-              <a href="<?php echo $show; ?>" class="btn btn-outline-secondary"><?php  echo number_format($a->price_amount,2,',',' '); ?>€</a>
+              <a href="<?php echo $show; ?>" class="btn btn-outline-secondary"><?php  echo number_format($a->amount,2,',',' '); ?>€</a>
             </div>
           </div>
           &nbsp;

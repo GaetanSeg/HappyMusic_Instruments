@@ -18,9 +18,9 @@
                 <a href="<?php echo site_url('article/show/'.$article->article_id); ?>"> <img src="<?php echo $this->picture_path.$article->image_name ;?>"width="100" height="100" ></a>
             </td>
             <td><?php echo $article->title; ?></td>
-            <td><?php echo number_format($article->price_amount,2,',','');?>€</td>
+            <td><?php echo number_format($article->amount,2,',','');?>€</td>
             <td><?php echo $s->sale_qty;?></td>
-            <td><?php echo number_format($article->price_amount*$s->sale_qty,2,',',' '); ?> € </td>
+            <td><?php echo number_format($article->amount*$s->sale_qty,2,',',' '); ?> € </td>
           </tr>
       <?php endforeach; ?>
     </tbody>

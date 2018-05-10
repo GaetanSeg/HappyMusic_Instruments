@@ -25,7 +25,7 @@ Site d'instruments de musique et de logiciel musical. (Projet d'étude)
   NameVirtualHost happymusic.local
 
 
-  <Directory "/Users/seggiogaetan/Documents/">
+  <Directory "/Users/nomUtilisateur/Documents/">
       AllowOverride All
       Options Indexes MultiViews FollowSymLinks
       Require all granted
@@ -34,7 +34,7 @@ Site d'instruments de musique et de logiciel musical. (Projet d'étude)
   <VirtualHost *:80>
       ServerName happymusic.local
 
-      DocumentRoot "/Users/nomUser/Documents/HappyMusic-Instruments/"
+      DocumentRoot "/Users/nomUtilisateur/Documents/HappyMusic-Instruments/"
   </VirtualHost>
 
   ```
